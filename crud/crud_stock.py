@@ -2,7 +2,6 @@ from sqlalchemy.orm import declarative_base, Session
 
 from models.stock import Stock
 
-Base = declarative_base()
 
 def create_stock(db: Session, stock_data):
     db_stock = Stock(**stock_data.dict())

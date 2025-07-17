@@ -27,3 +27,4 @@ class User(Base):
     biases = relationship("Bias", back_populates="user")
     nudges = relationship("Nudge", back_populates="user")
     behaviour_profile = relationship("BehaviourProfile", uselist=False, back_populates="user")
+    sandbox_sessions = relationship("SandboxSession", back_populates="user")

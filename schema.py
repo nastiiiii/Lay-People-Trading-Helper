@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional, List
 from uuid import UUID
 
@@ -117,3 +117,49 @@ class BehaviorProfileRead(BaseModel):
 
     class Config:
         from_attributes = True
+
+class SandboxTradeBase(BaseModel):
+    stock_symbol: str
+    action: str
+    quantity: float
+    timestamp: date
+    reason: Optional[str] = None
+
+class SandboxTradeCreate(SandboxTradeBase):
+    session_id: UUID
+
+class SandboxTradeRead(SandboxTradeBase):
+    trade_id: UUID
+    session_id: UUID
+
+    class Config:
+        orm_mode = True
+
+class SandboxSessionBase(BaseModel):
+    start_date: date
+    current_date: date
+    initial_balance: float = 100.0
+    current_balance: float = 100.0
+    is_active: bool = True
+
+class SandboxSessionCreate(SandboxSessionBase):
+    user_id: UUID
+
+class SandboxSessionRead(SandboxSessionBase):
+    session_id: UUID
+    user_id: UUID
+    trades: List[SandboxTradeRead] = []
+
+    class Config:
+        orm_mode = True
+
+class SandboxDecisionCreate(BaseModel):
+    trade_id: UUID
+    user_reason: str
+
+class SandboxDecisionRead(SandboxDecisionCreate):
+    decision_id: UUID
+    detected_biases: Optional[str]
+
+    class Config:
+        orm_mode = True
