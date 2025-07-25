@@ -1,7 +1,5 @@
-import uuid
 from collections import defaultdict
-
-from sqlalchemy import UUID
+from models.stock import Stock
 from sqlalchemy.orm import Session
 
 from models.sandboxDecision import SandboxDecision
@@ -11,9 +9,6 @@ from schema import SandboxTradeCreate, SandboxDecisionCreate
 from utils.simulation_state import SimulationState
 
 
-def create_sandbox_session (db: Session, user_id):
-    return db.query(SandboxSession).filter_by(user_id=user_id, is_active=True).first()
-
 def close_sandbox_session (db: Session, session_id):
     session = db.query(SandboxSession).filter_by(session_id=session_id).first()
     if session:
@@ -22,30 +17,9 @@ def close_sandbox_session (db: Session, session_id):
         db.refresh(session)
     return session
 
-def create_decision(db: Session, decision: SandboxDecisionCreate, detected_biases: str = None):
-    db_decision = SandboxDecision(
-        trade_id=decision.trade_id,
-        user_reason=decision.user_reason,
-        detected_biases=detected_biases
-    )
-    db.add(db_decision)
-    db.commit()
-    db.refresh(db_decision)
-    return db_decision
-
-def get_decision_by_trade(db: Session, trade_id):
-    return db.query(SandboxDecision).filter(SandboxDecision.trade_id == trade_id).first()
-
-def get_trades_for_session(db: Session, session_id: UUID):
-    return db.query(SandboxTrade).filter_by(session_id=session_id).all()
-
-def get_all_decisions(db: Session):
-    return db.query(SandboxDecision).all()
-
 def get_total_shares(db: Session, session_id, stock_symbol):
     trades = db.query(SandboxTrade).filter_by(session_id=session_id, stock_symbol=stock_symbol).all()
     return sum(t.quantity if t.action.lower() == 'buy' else -t.quantity for t in trades)
-
 
 def execute_trade(db:Session, trade_data: SandboxTradeCreate):
     session = db.query(SandboxSession).filter(
@@ -98,20 +72,6 @@ def execute_trade(db:Session, trade_data: SandboxTradeCreate):
     db.refresh(trade)
     return trade
 
-#For trading price
-def get_portfolio(db: Session, session_id):
-    trades = db.query(SandboxTrade).filter_by(session_id=session_id).all()
-    portfolio = defaultdict(float)
-    for trade in trades:
-        if trade.action == "buy":
-            portfolio[trade.stock_symbol] += trade.quantity
-        elif trade.action == "sell":
-            portfolio[trade.stock_symbol] -= trade.quantity
-    return {stock: qty for stock, qty in portfolio.items() if qty > 0}
-
-
-from models.stock import Stock
-
 
 def get_portfolio_summary(db: Session, session_id):
     session = db.query(SandboxSession).filter_by(session_id=session_id).first()
@@ -154,4 +114,3 @@ def get_portfolio_summary(db: Session, session_id):
         "stock_holdings": holdings,
         "total_portfolio_value": round(session.current_balance + total_stock_value, 2)
     }
-

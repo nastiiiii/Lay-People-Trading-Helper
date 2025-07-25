@@ -3,6 +3,8 @@ from datetime import date
 
 from fastapi import Depends, APIRouter, HTTPException
 from uuid import UUID
+
+from openai import OpenAI
 from sqlalchemy.orm import Session
 
 from crud import crud_sandbox
@@ -10,6 +12,8 @@ from db.database import get_db
 from models.sandboxSession import SandboxSession
 from schema import SandboxTradeRead, SandboxTradeCreate
 from services.sandbox_simulator import run_sandbox_simulation
+from utils.sandbox_advice import get_sandbox_advice, get_claude_advice
+from utils.simulation_state import SimulationState
 
 router = APIRouter(prefix="/sandbox", tags=["Sandbox"])
 
@@ -49,3 +53,39 @@ def portfolio_summary(session_id: UUID, db: Session = Depends(get_db)):
         return crud_sandbox.get_portfolio_summary(db, session_id)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
+@router.get("/sandbox/advice")
+def sandbox_advice(
+    session_id: UUID,
+    stock_symbol: str,
+    action: str,
+    db: Session = Depends(get_db),
+):
+    return get_sandbox_advice(db, session_id, stock_symbol, action)
+
+
+@router.get("/sandbox/ai-advice")
+def get_ai_advice(session_id: UUID, stock_symbol: str, action: str, db: Session = Depends(get_db)):
+    try:
+        current_price = SimulationState().get_price(session_id, stock_symbol)
+        if current_price is None:
+            raise HTTPException(status_code=404, detail="Current price not found in simulation.")
+
+        # Get portfolio snapshot
+        portfolio = crud_sandbox.get_portfolio_summary(db, session_id)
+
+        return get_claude_advice(session_id, stock_symbol, action, current_price, portfolio)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/sandbox/predict-next")
+def get_predicted_price(session_id: UUID, stock_symbol: str):
+    predicted_price = SimulationState().predict_next_price(session_id, stock_symbol)
+    if predicted_price is None:
+        raise HTTPException(status_code=400, detail="Not enough data to predict yet.")
+    return {
+        "stock_symbol": stock_symbol,
+        "predicted_next_price": round(predicted_price, 2)
+    }

@@ -27,7 +27,7 @@ def run_sandbox_simulation(session_id: str, db:Session):
     sim_state = SimulationState()
 
     while current_idx < len(prices):
-        time.sleep(5)
+        time.sleep(10)
 
         session = db.query(SandboxSession).filter_by(session_id=session_id).first()
         if not session or not session.is_active:
