@@ -124,6 +124,7 @@ class SandboxTradeBase(BaseModel):
     quantity: float
     timestamp: date
     reason: Optional[str] = None
+    confirm_bias: Optional[bool] = False
 
 class SandboxTradeCreate(SandboxTradeBase):
     session_id: UUID
@@ -163,3 +164,9 @@ class SandboxDecisionRead(SandboxDecisionCreate):
 
     class Config:
         orm_mode = True
+
+
+class BiasWarning(BaseModel):
+    warning: str
+    bias: str
+    requires_confirmation: bool

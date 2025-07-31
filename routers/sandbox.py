@@ -1,21 +1,24 @@
 import threading
 from datetime import date
+from typing import Union
 
 from fastapi import Depends, APIRouter, HTTPException
 from uuid import UUID
 
-from openai import OpenAI
+
 from sqlalchemy.orm import Session
 
 from crud import crud_sandbox
 from db.database import get_db
 from models.sandboxSession import SandboxSession
-from schema import SandboxTradeRead, SandboxTradeCreate
+from schema import SandboxTradeRead, SandboxTradeCreate, BiasWarning
+from services.bias_detector import predict_bias
 from services.sandbox_simulator import run_sandbox_simulation
 from utils.sandbox_advice import get_sandbox_advice, get_claude_advice
 from utils.simulation_state import SimulationState
 
 router = APIRouter(prefix="/sandbox", tags=["Sandbox"])
+
 
 @router.post("/start-sandbox/{user_id}")
 def start_sandbox(user_id: UUID, db: Session = Depends(get_db)):
@@ -39,9 +42,17 @@ def stop_sandbox(session_id: UUID, db: Session = Depends(get_db)):
     return {"message": f"Sandbox session {session.session_id} has been stopped."}
 
 
-@router.post("/sandbox/trade", response_model= SandboxTradeRead)
+@router.post("/sandbox/trade", response_model= Union[SandboxTradeRead, BiasWarning])
 def perform_trade(trade_data: SandboxTradeCreate, db: Session = Depends(get_db)):
     try:
+        bias = predict_bias(trade_data.reason)
+        if bias != "none" and not trade_data.confirm_bias:
+            return BiasWarning(
+                warning=f"Detected potential bias: '{bias}'. Do you want to continue?",
+                bias=bias,
+                requires_confirmation=True
+            )
+
         trade = crud_sandbox.execute_trade(db, trade_data)
         return trade
     except ValueError as e:
