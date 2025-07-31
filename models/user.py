@@ -28,3 +28,4 @@ class User(Base):
     nudges = relationship("Nudge", back_populates="user")
     behaviour_profile = relationship("BehaviourProfile", uselist=False, back_populates="user")
     sandbox_sessions = relationship("SandboxSession", back_populates="user")
+    quiz_results = relationship("QuizResult", back_populates="user")

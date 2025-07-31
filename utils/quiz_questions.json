@@ -1,0 +1,344 @@
+{
+  "Behavioral Finance & Bias Recognition": [
+    {
+      "question": "You only seek information that supports your belief that Tesla stock will rise. What bias are you exhibiting?",
+      "options": [
+        "Confirmation Bias",
+        "Loss Aversion",
+        "Anchoring",
+        "Overconfidence"
+      ],
+      "answer": "Confirmation Bias",
+      "explanation": "This is confirmation bias\u2014seeking out information that confirms your pre-existing beliefs."
+    },
+    {
+      "question": "You believe your prediction about a stock must be right because you're a seasoned trader. Which bias is this?",
+      "options": [
+        "Overconfidence",
+        "Bandwagon Effect",
+        "Anchoring",
+        "Loss Aversion"
+      ],
+      "answer": "Overconfidence",
+      "explanation": "Overconfidence bias occurs when traders overestimate their knowledge or predictive ability."
+    },
+    {
+      "question": "You refuse to sell a falling stock because you can't stand realizing a loss. What bias is in play?",
+      "options": [
+        "Loss Aversion",
+        "Confirmation Bias",
+        "Anchoring",
+        "Bandwagon Effect"
+      ],
+      "answer": "Loss Aversion",
+      "explanation": "Loss aversion is the tendency to prefer avoiding losses rather than acquiring equivalent gains."
+    },
+    {
+      "question": "You buy a stock because everyone in your trading group is buying it. What bias are you experiencing?",
+      "options": [
+        "Bandwagon Effect",
+        "Confirmation Bias",
+        "Overconfidence",
+        "Anchoring"
+      ],
+      "answer": "Bandwagon Effect",
+      "explanation": "The bandwagon effect is following others' actions without independent evaluation."
+    },
+    {
+      "question": "You base your valuation of a stock on the first price you saw, even if it's outdated. What is this?",
+      "options": [
+        "Anchoring",
+        "Confirmation Bias",
+        "Overconfidence",
+        "Bandwagon Effect"
+      ],
+      "answer": "Anchoring",
+      "explanation": "Anchoring bias is relying too heavily on the first piece of information encountered."
+    }
+  ],
+  "Emotional Triggers and Market Decisions": [
+    {
+      "question": "What emotional state is most likely to cause a trader to sell during a market dip?",
+      "options": [
+        "Fear",
+        "Greed",
+        "Euphoria",
+        "Confidence"
+      ],
+      "answer": "Fear",
+      "explanation": "Fear often drives panic selling during market downturns."
+    },
+    {
+      "question": "A trader buys more of a skyrocketing stock thinking it will keep rising. What emotion is likely driving this?",
+      "options": [
+        "Greed",
+        "Fear",
+        "Anxiety",
+        "Doubt"
+      ],
+      "answer": "Greed",
+      "explanation": "Greed can lead to chasing gains without proper analysis."
+    },
+    {
+      "question": "Euphoria in markets often leads to:",
+      "options": [
+        "Irrational buying",
+        "Careful planning",
+        "Risk reduction",
+        "Diversification"
+      ],
+      "answer": "Irrational buying",
+      "explanation": "Euphoria may cause overconfidence and impulsive trading."
+    },
+    {
+      "question": "What emotion can cause a trader to freeze and miss opportunities?",
+      "options": [
+        "Anxiety",
+        "Euphoria",
+        "Greed",
+        "Confidence"
+      ],
+      "answer": "Anxiety",
+      "explanation": "Anxiety can paralyze decision-making, causing hesitation."
+    },
+    {
+      "question": "Greed in a bull market can lead to what risky behavior?",
+      "options": [
+        "Overleveraging",
+        "Diversifying",
+        "Hedging",
+        "Saving"
+      ],
+      "answer": "Overleveraging",
+      "explanation": "Greed may push traders to use excessive leverage chasing gains."
+    }
+  ],
+  "Financial Fundamentals": [
+    {
+      "question": "What does it mean to place a 'limit order' instead of a 'market order'?",
+      "choices": [
+        "Buy/sell at any available price",
+        "Buy/sell only at a specified price or better",
+        "Buy/sell at the last traded price",
+        "Buy/sell at the day's opening price"
+      ],
+      "correct_answer": "Buy/sell only at a specified price or better",
+      "explanation": "A limit order is executed only at the specified price or better, unlike a market order which executes immediately at the best available price."
+    },
+    {
+      "question": "Which portfolio is typically riskier: one with 1 stock or one with 20?",
+      "choices": [
+        "1 stock",
+        "20 stocks",
+        "Both are equally risky",
+        "Depends on the market"
+      ],
+      "correct_answer": "1 stock",
+      "explanation": "A single-stock portfolio lacks diversification, increasing the risk compared to a portfolio with 20 stocks."
+    },
+    {
+      "question": "Which type of investment represents a loan to a company or government?",
+      "choices": [
+        "Stock",
+        "Bond",
+        "ETF",
+        "Derivative"
+      ],
+      "correct_answer": "Bond",
+      "explanation": "Bonds are debt instruments, meaning the investor is lending money to the issuer (a company or government)."
+    },
+    {
+      "question": "What does a stock ticker symbol represent?",
+      "choices": [
+        "A company's legal name",
+        "A company's product",
+        "A unique identifier for a stock",
+        "A market trend"
+      ],
+      "correct_answer": "A unique identifier for a stock",
+      "explanation": "A ticker symbol is a short code used to uniquely identify a stock listed on an exchange."
+    },
+    {
+      "question": "Which asset type allows investors to buy a basket of stocks in one transaction?",
+      "choices": [
+        "Stock",
+        "Bond",
+        "ETF",
+        "Option"
+      ],
+      "correct_answer": "ETF",
+      "explanation": "ETFs (Exchange-Traded Funds) allow investors to diversify by buying a collection of assets in a single trade."
+    }
+  ],
+  "Critical Thinking in Trading": [
+    {
+      "question": "A viral tweet says a major tech company is bankrupt. What should be your first step?",
+      "choices": [
+        "Sell your stock immediately",
+        "Verify the information from official sources",
+        "Retweet the news",
+        "Buy more stock before the price drops"
+      ],
+      "correct_answer": "Verify the information from official sources",
+      "explanation": "Always validate market-impacting news from trusted and official sources before acting."
+    },
+    {
+      "question": "What is a sign that a trader is joining a market trend due to fear of missing out?",
+      "choices": [
+        "Analyzing moving averages",
+        "Researching fundamentals",
+        "Following others into a trade without analysis",
+        "Reading financial statements"
+      ],
+      "correct_answer": "Following others into a trade without analysis",
+      "explanation": "This behavior reflects herd mentality, often driven by FOMO (fear of missing out), not analysis."
+    },
+    {
+      "question": "Why is it dangerous to rely only on social media for trading decisions?",
+      "choices": [
+        "Social media is always accurate",
+        "It's slow",
+        "It may contain unverified or manipulative content",
+        "Too many ads"
+      ],
+      "correct_answer": "It may contain unverified or manipulative content",
+      "explanation": "Social media can spread misinformation or hype, leading to poor trading decisions."
+    },
+    {
+      "question": "Which of the following is a red flag of market manipulation?",
+      "choices": [
+        "Consistent company profits",
+        "Unusual price spikes with no news",
+        "Strong earnings reports",
+        "Analyst upgrades"
+      ],
+      "correct_answer": "Unusual price spikes with no news",
+      "explanation": "Sharp price movements without news may signal pump-and-dump or other manipulation tactics."
+    },
+    {
+      "question": "A trader makes decisions based only on influencer tips. What critical step are they missing?",
+      "choices": [
+        "Reading news headlines",
+        "Checking historical charts",
+        "Doing independent research",
+        "Watching TV"
+      ],
+      "correct_answer": "Doing independent research",
+      "explanation": "Relying solely on influencers can be risky; traders should always verify with their own analysis."
+    }
+  ],
+  "Strategy and Planning": [
+    {
+      "question": "Which strategy is more suitable for a retirement account: day trading or index investing?",
+      "choices": [
+        "Day trading",
+        "Index investing",
+        "Options trading",
+        "Penny stock flipping"
+      ],
+      "correct_answer": "Index investing",
+      "explanation": "Index investing is a long-term, low-cost strategy ideal for retirement accounts."
+    },
+    {
+      "question": "How can a trade journal help reduce decision-making biases?",
+      "choices": [
+        "By providing trade tips",
+        "By logging emotions and reasoning",
+        "By automating trades",
+        "By buying low and selling high"
+      ],
+      "correct_answer": "By logging emotions and reasoning",
+      "explanation": "Trade journals help identify patterns and emotional triggers that lead to biased decisions."
+    },
+    {
+      "question": "What is the purpose of a trading checklist?",
+      "choices": [
+        "To buy fast",
+        "To compare profits",
+        "To ensure consistency and reduce errors",
+        "To select random stocks"
+      ],
+      "correct_answer": "To ensure consistency and reduce errors",
+      "explanation": "Checklists standardize the decision process and reduce impulsive or biased actions."
+    },
+    {
+      "question": "Which of the following is a long-term investing strategy?",
+      "choices": [
+        "Scalping",
+        "Day trading",
+        "Value investing",
+        "Momentum trading"
+      ],
+      "correct_answer": "Value investing",
+      "explanation": "Value investing focuses on buying undervalued stocks and holding them long-term."
+    },
+    {
+      "question": "What is the role of rebalancing in a portfolio?",
+      "choices": [
+        "Increase risk",
+        "Maintain target asset allocation",
+        "Avoid taxes",
+        "Sell only bonds"
+      ],
+      "correct_answer": "Maintain target asset allocation",
+      "explanation": "Rebalancing helps realign a portfolio with the investor\u2019s risk tolerance and goals."
+    }
+  ],
+  "Simulation Interpretation & Reflection": [
+    {
+      "question": "You lost money in a trade because you ignored contradicting news. What bias likely affected your decision?",
+      "choices": [
+        "Confirmation bias",
+        "Loss aversion",
+        "Bandwagon effect",
+        "Anchoring"
+      ],
+      "correct_answer": "Confirmation bias",
+      "explanation": "Ignoring contradicting evidence is a classic sign of confirmation bias."
+    },
+    {
+      "question": "After a profitable trade, you believe your next one will also succeed. What bias is this?",
+      "choices": [
+        "Gambler's fallacy",
+        "Overconfidence",
+        "Recency bias",
+        "Anchoring"
+      ],
+      "correct_answer": "Overconfidence",
+      "explanation": "Success can lead to overestimation of one's skill, resulting in overconfidence bias."
+    },
+    {
+      "question": "How should you reflect on a losing trade?",
+      "choices": [
+        "Blame the market",
+        "Evaluate what went wrong objectively",
+        "Ignore it",
+        "Avoid trading again"
+      ],
+      "correct_answer": "Evaluate what went wrong objectively",
+      "explanation": "Analyzing losses helps learn and avoid repeating the same mistakes."
+    },
+    {
+      "question": "Why is it useful to track trade outcomes in a simulation?",
+      "choices": [
+        "To see if the platform works",
+        "To test luck",
+        "To analyze decisions and improve strategies",
+        "To impress others"
+      ],
+      "correct_answer": "To analyze decisions and improve strategies",
+      "explanation": "Simulations offer safe environments to test and refine trading behavior."
+    },
+    {
+      "question": "What might a trader realize when they revisit their emotional state post-trade?",
+      "choices": [
+        "That emotion played no role",
+        "That decisions were purely rational",
+        "That emotion influenced their actions",
+        "That the news was fake"
+      ],
+      "correct_answer": "That emotion influenced their actions",
+      "explanation": "Post-trade reflection often reveals emotional influences not seen during the moment."
+    }
+  ]
+}

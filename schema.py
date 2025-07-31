@@ -1,3 +1,4 @@
+
 from datetime import datetime, date
 from typing import Optional, List
 from uuid import UUID
@@ -170,3 +171,23 @@ class BiasWarning(BaseModel):
     warning: str
     bias: str
     requires_confirmation: bool
+
+
+class QuizQuestion(BaseModel):
+    question: str
+    options: List[str]
+    correct_index: int  # not exposed to frontend
+
+class QuizAnswer(BaseModel):
+    question: str
+    selected_index: int
+
+class QuizSubmission(BaseModel):
+    category: str
+    answers: List[QuizAnswer]
+    user_id: UUID
+
+class QuizResultOut(BaseModel):
+    total_questions: int
+    correct_answers: int
+    category: str
