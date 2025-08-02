@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from db.database import Base, engine
-from routers import user, trade, stock, bias, nudge, behavior, sandbox, bias_detector, quiz
+from routers import user, trade, stock, bias, nudge, behavior, sandbox, bias_detector, quiz, market_simulation
 
 app = FastAPI()
 
@@ -25,5 +25,8 @@ app.include_router(nudge.router)
 app.include_router(behavior.router)
 app.include_router(sandbox.router)
 app.include_router(quiz.router)
+
+app.include_router(market_simulation.router)
+
 
 app.include_router(bias_detector.router)

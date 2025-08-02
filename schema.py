@@ -1,5 +1,6 @@
 
 from datetime import datetime, date
+from enum import Enum
 from typing import Optional, List
 from uuid import UUID
 
@@ -191,3 +192,38 @@ class QuizResultOut(BaseModel):
     total_questions: int
     correct_answers: int
     category: str
+
+class MarketType(str, Enum):
+    bull = "bull"
+    bear = "bear"
+    sideways = "sideways"
+    volatile = "volatile"
+
+class TraderType(str, Enum):
+    emotional = "emotional"
+    rule_based = "rule_based"
+    ai = "ai"
+    contrarian = "contrarian"
+    passive = "passive"
+
+class MarketAgentCreate(BaseModel):
+    trader_type: TraderType
+    count: int
+    aggressiveness: float = 1.0
+    reaction_speed: float = 1.0
+
+class MarketSimulationConfigCreate(BaseModel):
+    user_id: UUID
+    market_type: MarketType
+    shock_frequency: str = "medium"
+    noise_level: float = 0.1
+    agents: List[MarketAgentCreate]
+    include_user_trader: bool = False
+
+class MarketTickLogResponse(BaseModel):
+    tick: int
+    price: float
+    buy_pressure: float
+    sell_pressure: float
+    sentiment: float
+    timestamp: datetime
